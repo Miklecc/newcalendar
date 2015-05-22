@@ -2,7 +2,6 @@
 
 html {
   font-family: 'Roboto Slab', serif;
-  background-color: #EEEEEE
 }
 
 [layout=row] {
@@ -58,4 +57,8 @@ section.jumbotron h1 {
 .techs md-card img.pull-right {
   float: right;
   width: 50px;
+}
+
+.maincard {
+  max-width: 1000px;
 }

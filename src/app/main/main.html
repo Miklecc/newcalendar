@@ -1,17 +1,17 @@
-<div layout="column" layout-fill>
+<header ng-include="'app/components/navbar/navbar.html'"></header>
+<div layout="column" layout-fill layout-align="center center">
 
-  <header ng-include="'app/components/navbar/navbar.html'"></header>
 
-  <md-content>
+  <md-content >
 
-    <md-card layout layout-sm="column" layout-padding>
+    <md-card layout layout-sm="column" layout-padding class="maincard">
       <h2>How do I get a key?</h2>
       <p>
         Fill out some quick details, and request yourself an API key!
       </p>
     </md-card>
 
-    <md-card layout-padding>
+    <md-card layout-padding class="maincard">
       <div ng-controller="FormCtrl" >
       <h2> Request a Key </h2>
         <form name="userForm" >
@@ -44,21 +44,20 @@
       </div>
     </md-card>
 
-
-    <md-card layout layout-sm="column" layout-padding>
+    <md-card layout layout-sm="column" layout-padding  class="maincard" >
       <h2>Keymaker</h2>
       <p class="lead">
-        <img src="assets/images/keymaker.jpg" class="cardnail"><br>
+        <img src="assets/images/keymaker.jpg" class="cardnail" ><br>
         We do only what we're meant to do.
       </p>
     </md-card>
 
-
-    <footer>
-      <md-toolbar layout="row" layout-align="center center">
-        <p>With ♥ from doc</p>
-      </md-toolbar>
-    </footer>
   </md-content>
 
 </div>
+
+<footer>
+  <md-toolbar layout="row" layout-align="center center">
+    <p>With ♥ from doc</p>
+  </md-toolbar>
+</footer>
