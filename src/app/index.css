@@ -2,6 +2,7 @@
 
 html {
   font-family: 'Roboto Slab', serif;
+  background-color: #EEEEEE
 }
 
 [layout=row] {
@@ -19,12 +20,17 @@ html {
   height: 200px;
 }
 
+.cardnail {
+  height: 150px;
+  width: 180px;
+}
+
 .thumbnail img.pull-right {
   width: 50px;
 }
 
 md-toolbar.md-default-theme {
-  background-color: black;
+  background-color: #97C766;
 }
 
 section.jumbotron {
