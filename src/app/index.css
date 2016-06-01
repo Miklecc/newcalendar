@@ -60,5 +60,16 @@ section.jumbotron h1 {
 }
 
 .maincard {
-  max-width: 1000px;
+  max-width: 70rem;
+}
+
+/* ---- my stuff ----- */
+
+.maindiv {
+  max-width: 70rem;
+  background-color: #4DB6AC;
+}
+
+.layoutdiv {
+  padding: 2rem;
 }
