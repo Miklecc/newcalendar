@@ -66,10 +66,14 @@ section.jumbotron h1 {
 /* ---- my stuff ----- */
 
 .maindiv {
-  max-width: 70rem;
+  max-width: 36rem;
   background-color: #4DB6AC;
 }
 
 .layoutdiv {
   padding: 2rem;
+}
+
+.maindiv__button {
+  margin: 0.4rem;
 }

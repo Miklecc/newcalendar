@@ -3,58 +3,70 @@
 <div layout="column" layout-fill layout-align="center center" class="layoutdiv">
 
 
-
-  <div layout layout-wrap layout-padding layout-align="center center" class="maindiv">
-    <div layout layout-align="center center" flex="10" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,12,13,14]">{{i}}</div>
+  <div layout layout-align="center center" class="maindiv">
+    <div layout="column" layout-margin layout-align="center center">
+      <div layout-fill ng-repeat="i in test track by $index" layout="row" ng-if="!(($index ) % 10)">
+        <md-button layout-fill class="md-raised maindiv__button">{{$index+1}}</md-button>
+        <md-button layout-fill class="md-raised maindiv__button">{{$index+2}}</md-button>
+        <md-button layout-fill class="md-raised maindiv__button">{{$index+3}}</md-button>
+        <md-button layout-fill class="md-raised maindiv__button">{{$index+4}}</md-button>
+        <md-button layout-fill class="md-raised maindiv__button">{{$index+5}}</md-button>
+        <md-button layout-fill class="md-raised maindiv__button">{{$index+6}}</md-button>
+        <md-button layout-fill class="md-raised maindiv__button">{{$index+7}}</md-button>
+        <md-button layout-fill class="md-raised maindiv__button">{{$index+8}}</md-button>
+        <md-button layout-fill class="md-raised maindiv__button">{{$index+9}}</md-button>
+        <md-button layout-fill class="md-raised maindiv__button">{{$index+10}}</md-button>
+      </div>
+    </div>
   </div>
 
-    <md-card layout layout-sm="row" layout-padding class="maincard">
-      <h2>How do I get a key?</h2>
-      <p>
-        Fill out some quick details, and request yourself an API key!
-      </p>
-    </md-card>
+  <md-card layout layout-sm="row" layout-padding class="maincard">
+    <h2>How do I get a key?</h2>
+    <p>
+      Fill out some quick details, and request yourself an API key!
+    </p>
+  </md-card>
 
-    <md-card layout-padding class="maincard">
-      <div ng-controller="FormCtrl" >
-        <h2> Request a Key </h2>
-        <form name="userForm" >
+  <md-card layout-padding class="maincard">
+    <div ng-controller="FormCtrl">
+      <h2> Request a Key </h2>
+      <form name="userForm">
 
-          <div layout layout-sm="column">
-            <md-input-container flex>
-              <label>First name</label>
-              <input ng-model="user.firstName">
-            </md-input-container>
-            <md-input-container flex>
-              <label>Last Name</label>
-              <input ng-model="user.lastName">
-            </md-input-container>
-          </div>
-
+        <div layout layout-sm="column">
           <md-input-container flex>
-            <label>Company</label>
-            <input ng-model="user.company">
+            <label>First name</label>
+            <input ng-model="user.firstName">
           </md-input-container>
-
           <md-input-container flex>
-            <label>Phone</label>
-            <input ng-model="user.phone">
+            <label>Last Name</label>
+            <input ng-model="user.lastName">
           </md-input-container>
+        </div>
 
-          <section layout="row" layout-sm="column" >
-            <md-button class="md-raised md-primary">Request Key</md-button>
-          </section>
-        </form>
-      </div>
-    </md-card>
+        <md-input-container flex>
+          <label>Company</label>
+          <input ng-model="user.company">
+        </md-input-container>
 
-    <md-card layout layout-sm="column" layout-padding  class="maincard" >
-      <h2>Keymaker</h2>
-      <p class="lead">
-        <img src="assets/images/keymaker.jpg" class="cardnail" ><br>
-        We do only what we're meant to do.
-      </p>
-    </md-card>
+        <md-input-container flex>
+          <label>Phone</label>
+          <input ng-model="user.phone">
+        </md-input-container>
+
+        <section layout="row" layout-sm="column">
+          <md-button class="md-raised md-primary">Request Key</md-button>
+        </section>
+      </form>
+    </div>
+  </md-card>
+
+  <md-card layout layout-sm="column" layout-padding class="maincard">
+    <h2>Keymaker</h2>
+    <p class="lead">
+      <img src="assets/images/keymaker.jpg" class="cardnail"><br>
+      We do only what we're meant to do.
+    </p>
+  </md-card>
 
 
 </div>
