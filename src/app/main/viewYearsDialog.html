@@ -1,0 +1,24 @@
+<md-dialog aria-label="Mango (Fruit)">
+
+  <md-content class="md-padding">
+    <form name="userForm">
+      <md-input-container>
+        <div layout="column" layout-align="center end" flex>
+          <md-button ng-click="vm.hide('close_msg')" class="dialog_icon_close">
+            <i class="material-icons">close</i>
+          </md-button>
+        </div>
+          <label>My goal</label>
+          <textarea ng-model="vm.mygoal" md-maxlength="50"></textarea>
+      </md-input-container>
+    </form>
+  </md-content>
+
+  <div class="md-actions" layout="row">
+    <span flex></span>
+    <md-button ng-click="vm.save('save_msg')" class="md-primary"> Save </md-button>
+  </div>
+
+
+
+</md-dialog>

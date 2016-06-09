@@ -1,13 +1,13 @@
 'use strict';
 
 var gulp = require('gulp');
-
 var $ = require('gulp-load-plugins')();
 
 var wiredep = require('wiredep').stream;
 
 module.exports = function(options) {
   gulp.task('inject', ['scripts'], function () {
+
     var injectStyles = gulp.src([
       options.src + '/app/**/*.css'
     ], { read: false });
@@ -27,6 +27,7 @@ module.exports = function(options) {
     return gulp.src(options.src + '/*.html')
       .pipe($.inject(injectStyles, injectOptions))
       .pipe($.inject(injectScripts, injectOptions))
+      .pipe($.injectString.after('</title>', '\n<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">\n'))
       .pipe(wiredep(options.wiredep))
       .pipe(gulp.dest(options.tmp + '/serve'));
 

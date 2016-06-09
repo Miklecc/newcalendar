@@ -77,3 +77,9 @@ section.jumbotron h1 {
 .maindiv__button {
   margin: 0.4rem;
 }
+
+.dialog_icon_close {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+}

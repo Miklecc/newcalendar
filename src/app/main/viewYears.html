@@ -6,8 +6,8 @@
   <div layout layout-align="center center" class="maindiv">
     <div layout="column" layout-margin layout-align="center center">
       <div layout-fill ng-repeat="i in test track by $index" layout="row" ng-if="!(($index ) % 10)">
-        <md-button layout-fill class="md-raised maindiv__button">{{$index+1}}</md-button>
-        <md-button layout-fill class="md-raised maindiv__button">{{$index+2}}</md-button>
+        <md-button layout-fill class="md-raised maindiv__button"><md-tooltip md-direction="top" md-delay="5"> Refresh </md-tooltip>{{$index+1}}</md-button>
+        <md-button layout-fill class="md-raised maindiv__button" ng-click="showAdd($event, ($index+2))" id="cell-year_{{$index+2}}">{{$index+2}}</md-button>
         <md-button layout-fill class="md-raised maindiv__button">{{$index+3}}</md-button>
         <md-button layout-fill class="md-raised maindiv__button">{{$index+4}}</md-button>
         <md-button layout-fill class="md-raised maindiv__button">{{$index+5}}</md-button>
