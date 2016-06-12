@@ -11,7 +11,8 @@ angular.module('keymaker', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', '
       .state('home', {
         url: '/',
         templateUrl: 'app/main/viewYears.html',
-        controller: 'ViewYearsController'
+        controller: 'ViewYearsController',
+        controllerAs: 'vm'
       });
 
     $urlRouterProvider.otherwise('/');

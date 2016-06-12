@@ -9,14 +9,14 @@
           </md-button>
         </div>
           <label>My goal</label>
-          <textarea ng-model="vm.mygoal" md-maxlength="50"></textarea>
+          <textarea ng-model="vm.yeardata" md-maxlength="50"></textarea>
       </md-input-container>
     </form>
   </md-content>
 
   <div class="md-actions" layout="row">
     <span flex></span>
-    <md-button ng-click="vm.save('save_msg')" class="md-primary"> Save </md-button>
+    <md-button ng-click="vm.save(vm.yeardata)" class="md-primary"> Save </md-button>
   </div>
 
 

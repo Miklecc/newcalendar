@@ -2,12 +2,20 @@
 
 angular
   .module('keymaker')
-  .controller('ViewYearsController', function ($scope, $mdDialog) {
+  .controller('ViewYearsController', function ($mdDialog, yearsService) {
 
-    $scope.test = new Array(90);
+    var vm = this;
 
-    $scope.showAdd = function(ev, index) {
+    vm.test = new Array(90);
+
+    vm.userYearData = yearsService.userYearData;
+
+    vm.showAdd = function(ev, index) {
+
+      vm.yearIndex = index;
     //  var parentEl = angular.element(document.querySelector('.cell-year_'+index));
+
+    // calling dialog
       $mdDialog.show({
         controller: DialogController,
         templateUrl: 'app/main/viewYearsDialog.html',
@@ -18,22 +26,23 @@ angular
         escapeToClose: true,
         bindToController: true,
         disableParentScroll: false,
-        controllerAs: 'vm'
-
-
+        controllerAs: 'vm',
+        locals: {
+          yearIndex: this.yearIndex
+        }
       })
         .then(function(answer) {
           console.log('$mdDialog.show success = ', answer);
-          $scope.alert = 'You said the information was "' + answer + '".';
-        }, function() {
+        }, function(answer) {
           console.log('$mdDialog.show fail = ', answer);
-          $scope.alert = 'You cancelled the dialog.';
         });
     };
-
-    function DialogController($mdDialog) {
+    // dialog controller
+    function DialogController($mdDialog, yearIndex, yearsService) {
 
       var vm = this;
+
+      vm.yearIndex = yearIndex;
 
       vm.hide = function(answer) {
         $mdDialog.hide(answer);
@@ -42,10 +51,11 @@ angular
         $mdDialog.cancel();
       };
       vm.save = function(answer) {
+        yearsService.saveYear(vm.yearIndex, answer).then(function(data){
+        //  console.log('promise yearsService.saveYear ', data);
+        });
         $mdDialog.hide(answer);
-        console.log('DialogController vm.mygoal = ', vm.mygoal);
       };
     }
-
-
   });
+
