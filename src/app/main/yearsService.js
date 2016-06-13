@@ -17,10 +17,12 @@ angular
     };
 
     //TODO: call to external storage to update local 'userYearData'
-    var updateYear = function () {
+    var updateYear = function (year) {
       var deferred = $q.defer();
+      
+      var inputValue = userYearData[year];
 
-      deferred.resolve(userYearData);
+      deferred.resolve(inputValue);
 
       return deferred.promise;
     };

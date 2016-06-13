@@ -7,7 +7,14 @@
     <div layout="column" layout-margin layout-align="center center">
       <div layout-fill ng-repeat="i in vm.test track by $index" layout="row" ng-if="!(($index ) % 10)">
         <md-button layout-fill class="md-raised maindiv__button"><md-tooltip md-direction="top" md-delay="5"> {{vm.userYearData[$index+1]}} </md-tooltip>{{$index+1}}</md-button>
-        <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+2))" id="cell-year_{{$index+2}}"><md-tooltip md-direction="top" md-delay="5" ng-if="vm.userYearData[$index+2]"> {{vm.userYearData[$index+2]}} </md-tooltip> {{$index+2}} </md-button>
+        <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+2))" id="cell-year_{{$index+2}}">
+
+          <md-tooltip md-direction="top" md-delay="5" ng-if="vm.userYearData[$index+2]">
+            {{vm.userYearData[$index+2]}}
+          </md-tooltip>
+
+          {{$index+2}}
+        </md-button>
         <md-button layout-fill class="md-raised maindiv__button">{{$index+3}}</md-button>
         <md-button layout-fill class="md-raised maindiv__button">{{$index+4}}</md-button>
         <md-button layout-fill class="md-raised maindiv__button">{{$index+5}}</md-button>

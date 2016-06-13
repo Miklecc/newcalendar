@@ -8,11 +8,13 @@ angular
 
     vm.test = new Array(90);
 
-    vm.userYearData = yearsService.userYearData;
+    // second 'wrong' way of calling mock Service
+   // vm.userYearData = yearsService.userYearData;
 
     vm.showAdd = function(ev, index) {
 
       vm.yearIndex = index;
+
     //  var parentEl = angular.element(document.querySelector('.cell-year_'+index));
 
     // calling dialog
@@ -44,6 +46,15 @@ angular
 
       vm.yearIndex = yearIndex;
 
+      getUserData();
+
+      function getUserData() {
+        yearsService.updateYear(vm.yearIndex).then(function(res) {
+          vm.yearlabel = res;
+          console.log('yearsService.updateYear() = ', vm.yearlabel);
+        })
+      }
+
       vm.hide = function(answer) {
         $mdDialog.hide(answer);
       };
@@ -51,9 +62,19 @@ angular
         $mdDialog.cancel();
       };
       vm.save = function(answer) {
-        yearsService.saveYear(vm.yearIndex, answer).then(function(data){
-        //  console.log('promise yearsService.saveYear ', data);
-        });
+
+        saveUserData();
+
+        function saveUserData() {
+          yearsService.saveYear(vm.yearIndex, answer).then(function(res) {
+            vm.userYearData = res;
+            console.log('yearsService.saveYear = ', vm.userYearData);
+          })
+        }
+
+/*        // second 'wrong' way of calling mock Service
+          yearsService.saveYear(vm.yearIndex, answer).then(function(data){
+        });*/
         $mdDialog.hide(answer);
       };
     }
