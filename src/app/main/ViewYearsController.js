@@ -8,6 +8,13 @@ angular
 
     vm.test = new Array(90);
 
+    getUserData();
+    function getUserData() {
+      yearsService.updateYear().then(function(res) {
+        vm.yearall = res;
+      })
+    }
+
     // second 'wrong' way of calling mock Service
    // vm.userYearData = yearsService.userYearData;
 
@@ -34,24 +41,40 @@ angular
         }
       })
         .then(function(answer) {
-          console.log('$mdDialog.show success = ', answer);
         }, function(answer) {
-          console.log('$mdDialog.show fail = ', answer);
         });
     };
+
     // dialog controller
-    function DialogController($mdDialog, yearIndex, yearsService) {
+    function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope) {
 
       var vm = this;
-
       vm.yearIndex = yearIndex;
 
-      getUserData();
+      vm.hidden = false;
+      vm.isOpen = false;
+      vm.hover = false;
+      // On opening, add a delayed property which shows tooltips after the speed dial has opened
+      // so that they have the proper position; if closing, immediately hide the tooltips
+      $scope.$watch('vm.isOpen', function(isOpen) {
+        if (isOpen) {
+          $timeout(function() {
+            $scope.tooltipVisible = vm.isOpen;
+          }, 600);
+        } else {
+          $scope.tooltipVisible = vm.isOpen;
+        }
+      });
+      vm.items = [
+        { name: "Twitter", direction: "bottom" },
+        { name: "Facebook", direction: "top" },
+        { name: "Google Hangout", direction: "bottom" }
+      ];
 
+      getUserData();
       function getUserData() {
-        yearsService.updateYear(vm.yearIndex).then(function(res) {
+        yearsService.updateYearByIndex(vm.yearIndex).then(function(res) {
           vm.yearlabel = res;
-          console.log('yearsService.updateYear() = ', vm.yearlabel);
         })
       }
 
@@ -64,7 +87,6 @@ angular
       vm.save = function(answer) {
 
         saveUserData();
-
         function saveUserData() {
           yearsService.saveYear(vm.yearIndex, answer).then(function(res) {
             vm.userYearData = res;
