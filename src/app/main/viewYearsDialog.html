@@ -1,43 +1,40 @@
 <md-dialog aria-label="Mango (Fruit)">
 
-  <md-content class="md-padding">
+  <md-content class="md-padding dialog__content">
+    <div layout="column" layout-align="center end" class="dialog__icon--div" flex>
+      <md-button ng-click="vm.hide('close_msg')" class="dialog__icon--close">
+        <i class="material-icons">close</i>
+      </md-button>
+    </div>
     <form name="userForm">
-      <md-input-container>
-        <div layout="column" layout-align="center end" flex>
-          <md-button ng-click="vm.hide('close_msg')" class="dialog_icon_close">
-            <i class="material-icons">close</i>
-          </md-button>
-        </div>
+      <md-input-container class="dialog__content__container">
         <label>{{vm.yearlabel}}</label>
         <textarea ng-model="vm.yeardata" rows="1" md-maxlength="50" maxlength="50"></textarea>
       </md-input-container>
 
-      <md-fab-speed-dial ng-hide="vm.hidden" md-direction="left" md-open="vm.isOpen"
-                         class="md-scale md-fab-top-right" ng-class="{ 'md-hover-full': vm.hover }"
-                         ng-mouseenter="vm.isOpen=true" ng-mouseleave="vm.isOpen=false">
+
+
+  <!--    <md-fab-speed-dial md-direction="right" md-open="vm.isOpen"
+                         class="md-scale md-fab-top-right" ng-mouseenter="vm.isOpen=true" ng-mouseleave="vm.isOpen=false">
         <md-fab-trigger>
           <md-button aria-label="menu" class="md-fab md-warn"></md-button>
         </md-fab-trigger>
         <md-fab-actions>
           <div ng-repeat="item in vm.items">
-            <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini"
-                       ng-click="vm.openDialog($event, item)">
-              <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible"
-                          md-autohide="false">
+            <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini">
+              <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible" md-autohide="false">
                 {{item.name}}
               </md-tooltip>
             </md-button>
           </div>
         </md-fab-actions>
-      </md-fab-speed-dial>
+      </md-fab-speed-dial>-->
 
     </form>
   </md-content>
 
-  <div class="md-actions" layout="row">
-    <span flex></span>
-    <md-button ng-click="vm.save(vm.yeardata)" class="md-primary"> Save</md-button>
-  </div>
-
+  <md-dialog-actions layout-align="end end">
+    <md-button ng-click="vm.save(vm.yeardata)" class="md-primary">Save</md-button>
+  </md-dialog-actions>
 
 </md-dialog>

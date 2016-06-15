@@ -77,9 +77,26 @@ section.jumbotron h1 {
 
 .maindiv__button {
   margin: 0.4rem;
+  line-height: 2rem;
+  min-width: 2rem;
 }
 
-.dialog_icon_close {
+.dialog__content {
+  padding: 1rem 0 0 1rem;
+}
+
+.dialog__content__container {
+  margin: 1.2rem 0 0 0;
+}
+
+.dialog__icon--div {
+  margin-top: -0.2rem;
+  margin-right: 0.5rem;
+}
+
+.dialog__icon--close {
+  min-height: 0.2rem;
+  min-width: 0.2rem;
   width: 1.5rem;
   height: 1.5rem;
   padding: 0;
@@ -87,6 +104,7 @@ section.jumbotron h1 {
 
 
 /* ---- Dialog: md-fab-speed-dial ----- */
+
 .fabSpeedDialdemoMoreOptions .md-fab-top-right {
   top: 16px; }
 @media (max-device-width: 600px) {

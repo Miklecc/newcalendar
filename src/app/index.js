@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('keymaker', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ngMaterial', 'ngMessages'])
+angular.module('keymaker', ['ngAnimate', 'ngCookies', 'ngSanitize', 'ngResource', 'ui.router', 'ngMaterial', 'ngMessages'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('template', {

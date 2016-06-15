@@ -51,9 +51,7 @@ angular
       var vm = this;
       vm.yearIndex = yearIndex;
 
-      vm.hidden = false;
       vm.isOpen = false;
-      vm.hover = false;
       // On opening, add a delayed property which shows tooltips after the speed dial has opened
       // so that they have the proper position; if closing, immediately hide the tooltips
       $scope.$watch('vm.isOpen', function(isOpen) {
