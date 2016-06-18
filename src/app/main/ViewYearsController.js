@@ -75,10 +75,15 @@ angular
         vm.categoryColor = color;
       };
 
+      //TODO: FIX console error "angular.js:13642 TypeError: Cannot read property 'data' of undefined"
       getUserData();
       function getUserData() {
         yearsService.updateYearByIndex(vm.yearIndex).then(function(res) {
-          vm.yearlabel = res;
+          var res = res;
+          vm.yeardata = res['data'];
+          vm.categoryName = res['category'];
+          vm.categoryColor = res['color'];
+          console.log('res', res);
         })
       }
 

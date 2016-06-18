@@ -125,6 +125,13 @@ section.jumbotron h1 {
   font-size: 2.5rem;
 }
 
+.dialogFabIconRed { color: red }
+.dialogFabIconBlue { color: blue }
+.dialogFabIconGreen { color: green }
+.dialogFabIconPink { color: pink }
+.dialogFabIconOrange { color: orange }
+
+
 .md-button.md-fab {
   width: 2rem;
   height: 2rem;

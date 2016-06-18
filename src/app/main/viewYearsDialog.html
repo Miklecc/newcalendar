@@ -26,7 +26,12 @@
                            class="md-scale" ng-mouseenter="vm.isOpen=true" ng-mouseleave="vm.isOpen=false">
           <md-fab-trigger>
             <md-button aria-label="menu" class="dialog__fab--button">
-              <i class="material-icons dialog__fab--icon">send</i>
+              <i class="material-icons dialog__fab--icon"
+                 ng-class="{dialogFabIconRed:vm.categoryColor==='red', dialogFabIconBlue:vm.categoryColor==='blue',
+                  dialogFabIconGreen:vm.categoryColor==='green', dialogFabIconPink:vm.categoryColor==='pink',
+                   dialogFabIconOrange:vm.categoryColor==='orange'}">
+                send
+              </i>
             </md-button>
           </md-fab-trigger>
           <md-fab-actions>
