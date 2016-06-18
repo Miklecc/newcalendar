@@ -113,6 +113,18 @@ section.jumbotron h1 {
 
 /* ---- Dialog: md-fab-speed-dial ----- */
 
+.dialog__fab--button {
+  height: 2.5rem;
+  min-width: 2.5rem;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+}
+
+.dialog__fab--icon {
+  font-size: 2.5rem;
+}
+
 .md-button.md-fab {
   width: 2rem;
   height: 2rem;

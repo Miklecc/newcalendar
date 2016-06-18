@@ -71,6 +71,10 @@ angular
         { name: "Facebook", direction: "bottom", color:'blue' }
       ];
 
+      vm.setColor = function(color) {
+        vm.categoryColor = color;
+      };
+
       getUserData();
       function getUserData() {
         yearsService.updateYearByIndex(vm.yearIndex).then(function(res) {
@@ -84,11 +88,11 @@ angular
       vm.cancel = function() {
         $mdDialog.cancel();
       };
-      vm.save = function(answer) {
+      vm.save = function(answer, category) {
 
         saveUserData();
         function saveUserData() {
-          yearsService.saveYear(vm.yearIndex, answer).then(function(res) {
+          yearsService.saveYear(vm.yearIndex, answer, category, vm.categoryColor).then(function(res) {
             vm.userYearData = res;
             console.log('yearsService.saveYear = ', vm.userYearData);
           })

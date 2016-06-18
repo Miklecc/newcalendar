@@ -7,10 +7,10 @@ angular
     var userYearData = [];
 
     // call to external storage to save user input
-    var saveYear = function (year, data) {
+    var saveYear = function (year, data, category, color) {
       var deferred = $q.defer();
 
-      userYearData[year] = data;
+      userYearData[year] = {'data': data, 'category': category, 'color': color};
       deferred.resolve(userYearData);
 
       return deferred.promise;
