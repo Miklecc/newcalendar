@@ -64,9 +64,11 @@ angular
         }
       });
       vm.items = [
-        { name: "Twitter", direction: "bottom" },
-        { name: "Facebook", direction: "top" },
-        { name: "Google Hangout", direction: "bottom" }
+        { name: "Twitter", direction: "bottom", color:'red' },
+        { name: "Facebook", direction: "top", color:'pink' },
+        { name: "Google Hangout", direction: "bottom", color:'green' },
+        { name: "Facebook", direction: "top", color:'orange' },
+        { name: "Facebook", direction: "bottom", color:'blue' }
       ];
 
       getUserData();

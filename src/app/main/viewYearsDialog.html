@@ -2,36 +2,47 @@
 
   <md-content class="md-padding dialog__content">
     <div layout="column" layout-align="center end" class="dialog__icon--div" flex>
-      <md-button ng-click="vm.hide('close_msg')" class="dialog__icon--close">
+      <md-button layout-align="end start" ng-click="vm.hide('close_msg')" class="dialog__icon--close">
         <i class="material-icons">close</i>
       </md-button>
     </div>
     <form name="userForm">
-      <md-input-container class="dialog__content__container">
-        <label>{{vm.yearlabel}}</label>
-        <textarea ng-model="vm.yeardata" rows="1" md-maxlength="50" maxlength="50"></textarea>
+
+      <md-input-container layout="column" class="dialog__content__textarea">
+        <label>Goal</label>
+        <!--<label>{{vm.yearlabel}}</label>-->
+        <textarea ng-model="vm.yeardata" rows="2" md-maxlength="50" maxlength="50"></textarea>
       </md-input-container>
 
+      <md-input-container class="dialog__content__input">
+        <label>Category</label>
+        <input aria-label=" " flex="70" flex-order="1" ng-model="vm.categoryName">
+        <span aria-label=" " flex="30" flex-order="2"></span>
+      </md-input-container>
 
+      <md-input-container layout="column" class="dialog__content__input">
 
-  <!--    <md-fab-speed-dial md-direction="right" md-open="vm.isOpen"
-                         class="md-scale md-fab-top-right" ng-mouseenter="vm.isOpen=true" ng-mouseleave="vm.isOpen=false">
-        <md-fab-trigger>
-          <md-button aria-label="menu" class="md-fab md-warn"></md-button>
-        </md-fab-trigger>
-        <md-fab-actions>
-          <div ng-repeat="item in vm.items">
-            <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini">
-              <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible" md-autohide="false">
-                {{item.name}}
-              </md-tooltip>
-            </md-button>
-          </div>
-        </md-fab-actions>
-      </md-fab-speed-dial>-->
+        <md-fab-speed-dial md-direction="right" md-open="vm.isOpen"
+                           class="md-scale" ng-mouseenter="vm.isOpen=true" ng-mouseleave="vm.isOpen=false">
+          <md-fab-trigger>
+            <md-button aria-label="menu" class="md-fab md-warn"></md-button>
+          </md-fab-trigger>
+          <md-fab-actions>
+            <div ng-repeat="item in vm.items">
+              <md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini" ng-style="{'background-color': '{{item.color}}'}">
+                <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible" md-autohide="false">
+                  {{item.name}}
+                </md-tooltip>
+              </md-button>
+            </div>
+          </md-fab-actions>
+        </md-fab-speed-dial>
+
+      </md-input-container>
 
     </form>
   </md-content>
+
 
   <md-dialog-actions layout-align="end end">
     <md-button ng-click="vm.save(vm.yeardata)" class="md-primary">Save</md-button>
