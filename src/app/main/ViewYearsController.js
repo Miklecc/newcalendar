@@ -10,7 +10,7 @@ angular
 
     getUserData();
     function getUserData() {
-      yearsService.updateYear().then(function(res) {
+      yearsService.updateYearTooltip().then(function(res) {
         vm.yearall = res;
       })
     }
@@ -78,22 +78,44 @@ angular
         }
       });
       vm.items = [
-        { name: "Twitter", direction: "bottom", color:'red' },
-        { name: "Facebook", direction: "top", color:'pink' },
-        { name: "Google Hangout", direction: "bottom", color:'green' },
-        { name: "Facebook", direction: "top", color:'orange' },
-        { name: "Facebook", direction: "bottom", color:'blue' }
+        { name: "", direction: "bottom", color:'red' },
+        { name: "", direction: "top", color:'pink' },
+        { name: "", direction: "bottom", color:'green' },
+        { name: "", direction: "top", color:'orange' },
+        { name: "", direction: "bottom", color:'blue' }
       ];
 
       vm.setColor = function(color) {
         vm.categoryColor = color;
       };
 
+      // updating categoryColorAll from yearService to display in FAB button Tooltips the latest
+      // combination color-category entered by user
+      getCategoryColor();
+      function getCategoryColor() {
+        yearsService.updateCategoryColor().then(function (res) {
+          var categoryColorAll = res;
+
+          for (var key in categoryColorAll) {
+            if (categoryColorAll.hasOwnProperty(key)) {
+              for (var i = 0; i < vm.items.length; i++) {
+                if (vm.items[i]['color'] === key) {
+                  vm.items[i]['name'] = categoryColorAll[key];
+                }
+              }
+            }
+          }
+
+        })
+      }
+
+
       //TODO: FIX console error "angular.js:13642 TypeError: Cannot read property 'data' of undefined"
       // displaying filled fields if user already entered something
       getUserData();
       function getUserData() {
         yearsService.updateYearByIndex(vm.yearIndex).then(function (res) {
+          // check if there is data in the cell, saved by user
           if (res) {
             var res = res;
             vm.yeardata = res['data'];

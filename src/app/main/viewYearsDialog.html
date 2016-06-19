@@ -10,7 +10,6 @@
 
       <md-input-container layout="column" class="dialog__content__textarea">
         <label>Goal</label>
-        <!--<label>{{vm.yearlabel}}</label>-->
         <textarea ng-model="vm.yeardata" rows="2" md-maxlength="50" maxlength="50"></textarea>
       </md-input-container>
 
@@ -38,7 +37,7 @@
             <div ng-repeat="item in vm.items">
               <md-button aria-label="{{item.name}}" ng-click="vm.setColor(item.color)" class="dialog__fab--button" >
                 <i class="material-icons dialog__fab--icon" ng-style="{'color': '{{item.color}}'}">opacity</i>
-                <md-tooltip md-direction="{{item.direction}}" md-visible="tooltipVisible" md-autohide="false">
+                <md-tooltip ng-if="item.name" md-direction="{{item.direction}}" md-visible="tooltipVisible" md-autohide="false">
                   {{item.name}}
                 </md-tooltip>
               </md-button>
