@@ -40,7 +40,19 @@ angular
           yearIndex: this.yearIndex
         }
       })
-        .then(function(answer) {
+        .then(function(cellIndex) {
+
+          // updating element color & request from yearService
+          getUserData();
+          function getUserData() {
+            yearsService.updateYearByIndex(cellIndex).then(function (res) {
+              var res = res;
+              var color = res['color'];
+              var index = cellIndex;
+              var myEl = angular.element(document.querySelector('#cell-year_'+index));
+              myEl[0].style['background-color'] = color;
+            })
+          }
         }, function(answer) {
         });
     };
@@ -76,37 +88,36 @@ angular
       };
 
       //TODO: FIX console error "angular.js:13642 TypeError: Cannot read property 'data' of undefined"
+      // displaying filled fields if user already entered something
       getUserData();
       function getUserData() {
-        yearsService.updateYearByIndex(vm.yearIndex).then(function(res) {
+        yearsService.updateYearByIndex(vm.yearIndex).then(function (res) {
           var res = res;
           vm.yeardata = res['data'];
           vm.categoryName = res['category'];
           vm.categoryColor = res['color'];
-          console.log('res', res);
         })
       }
 
-      vm.hide = function(answer) {
-        $mdDialog.hide(answer);
+      vm.hide = function(resp) {
+        $mdDialog.hide(resp);
       };
       vm.cancel = function() {
         $mdDialog.cancel();
       };
-      vm.save = function(answer, category) {
+      vm.save = function(data, category) {
 
         saveUserData();
         function saveUserData() {
-          yearsService.saveYear(vm.yearIndex, answer, category, vm.categoryColor).then(function(res) {
+          yearsService.saveYear(vm.yearIndex, data, category, vm.categoryColor).then(function(res) {
             vm.userYearData = res;
-            console.log('yearsService.saveYear = ', vm.userYearData);
           })
         }
 
 /*        // second 'wrong' way of calling mock Service
-          yearsService.saveYear(vm.yearIndex, answer).then(function(data){
+          yearsService.saveYear(vm.yearIndex, data).then(function(data){
         });*/
-        $mdDialog.hide(answer);
+        $mdDialog.hide(vm.yearIndex);
       };
     }
   });
