@@ -46,11 +46,13 @@ angular
           getUserData();
           function getUserData() {
             yearsService.updateYearByIndex(cellIndex).then(function (res) {
-              var res = res;
-              var color = res['color'];
-              var index = cellIndex;
-              var myEl = angular.element(document.querySelector('#cell-year_'+index));
-              myEl[0].style['background-color'] = color;
+              if (res) {
+                var res = res;
+                var color = res['color'];
+                var index = cellIndex;
+                var myEl = angular.element(document.querySelector('#cell-year_' + index));
+                myEl[0].style['background-color'] = color;
+              }
             })
           }
         }, function(answer) {
@@ -92,10 +94,12 @@ angular
       getUserData();
       function getUserData() {
         yearsService.updateYearByIndex(vm.yearIndex).then(function (res) {
-          var res = res;
-          vm.yeardata = res['data'];
-          vm.categoryName = res['category'];
-          vm.categoryColor = res['color'];
+          if (res) {
+            var res = res;
+            vm.yeardata = res['data'];
+            vm.categoryName = res['category'];
+            vm.categoryColor = res['color'];
+          }
         })
       }
 
