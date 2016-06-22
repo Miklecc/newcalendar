@@ -45,7 +45,6 @@ angular
     } ;
 
     return {
-      userYearData: userYearData,
       saveYear: saveYear,
       updateYearTooltip: updateYearTooltip,
       updateCategoryColor: updateCategoryColor,
