@@ -107,6 +107,43 @@ section.jumbotron h1 {
   padding: 0;
 }
 
+/* ---- Year View : Legenda ----- */
+
+.year__legenda__top {
+  margin-top: 8px;
+}
+
+.year__legenda__top--text {
+  height: 40px;
+  font-family: Comic Sans MS;
+  font-size: 38px;
+  color: #0080ff;
+  text-shadow: 1px 1px 1px #829bc3;
+}
+
+.year__legenda__top--icon {
+  font-size: 44px;
+  color: #0080ff;
+  text-shadow: 1px 1px 1px #829bc3;
+}
+
+.year__legenda__bottom {
+  margin-bottom: 8px;
+}
+
+.year__legenda__bottom--text {
+  font-family: Comic Sans MS;
+  font-size: 38px;
+  color: #902683;
+  text-shadow: 1px 1px 1px #bd55c3;
+}
+
+.year__legenda__bottom--icon {
+  font-size: 44px;
+  color: #902683;
+  text-shadow: 1px 1px 1px #bd55c3;
+}
+
 /* ---- Dialog: md-fab-speed-dial ----- */
 
 .dialog__fab--button {

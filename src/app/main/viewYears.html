@@ -2,86 +2,105 @@
 
 <div layout="column" layout-fill layout-align="center center" class="layoutdiv">
 
+  <div layout="row">
 
-  <div layout layout-align="center center" class="maindiv">
-    <div layout="column" layout-margin layout-align="center center">
+    <div layout="row" layout-align="end start" class="year__legenda__top">
+      <div class="year__legenda__top--text">
+        Birth
+      </div>
+      <i class="material-icons year__legenda__top--icon">arrow_forward</i>
+    </div>
 
-      <div layout-fill ng-repeat="i in vm.test track by $index" layout="row" ng-if="!(($index ) % 10)">
+    <div layout-align="center center" class="maindiv">
+      <div layout="column" layout-margin layout-align="center center">
 
-        <md-button layout-fill class="md-raised maindiv__button"
-                   ng-click="vm.showAdd($event, ($index+1))" id="cell-year_{{$index+1}}">
-          {{$index+1}}
-          <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+1]">
-            {{vm.yearall[$index+1]}}
-          </md-tooltip>
-        </md-button>
+        <div layout-fill ng-repeat="i in vm.test track by $index" layout="row" ng-if="!(($index ) % 10)">
 
-        <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+2))" id="cell-year_{{$index+2}}">
-          {{$index+2}}
-          <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+2]">
-            {{vm.yearall[$index+2]}}
-          </md-tooltip>
-        </md-button>
+          <md-button layout-fill class="md-raised maindiv__button"
+                     ng-click="vm.showAdd($event, ($index+1))" id="cell-year_{{$index+1}}">
+            {{$index+1}}
+            <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+1]">
+              {{vm.yearall[$index+1]}}
+            </md-tooltip>
+          </md-button>
 
-        <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+3))" id="cell-year_{{$index+3}}">
-          {{$index+3}}
-          <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+3]">
-            {{vm.yearall[$index+3]}}
-          </md-tooltip>
-        </md-button>
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+2))" id="cell-year_{{$index+2}}">
+            {{$index+2}}
+            <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+2]">
+              {{vm.yearall[$index+2]}}
+            </md-tooltip>
+          </md-button>
 
-        <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+4))" id="cell-year_{{$index+4}}">
-          {{$index+4}}
-          <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+4]">
-            {{vm.yearall[$index+4]}}
-          </md-tooltip>
-        </md-button>
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+3))" id="cell-year_{{$index+3}}">
+            {{$index+3}}
+            <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+3]">
+              {{vm.yearall[$index+3]}}
+            </md-tooltip>
+          </md-button>
 
-        <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+5))" id="cell-year_{{$index+5}}">
-          {{$index+5}}
-          <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+5]">
-            {{vm.yearall[$index+5]}}
-          </md-tooltip>
-        </md-button>
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+4))" id="cell-year_{{$index+4}}">
+            {{$index+4}}
+            <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+4]">
+              {{vm.yearall[$index+4]}}
+            </md-tooltip>
+          </md-button>
 
-        <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+6))" id="cell-year_{{$index+6}}">
-          {{$index+6}}
-          <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+6]">
-            {{vm.yearall[$index+6]}}
-          </md-tooltip>
-        </md-button>
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+5))" id="cell-year_{{$index+5}}">
+            {{$index+5}}
+            <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+5]">
+              {{vm.yearall[$index+5]}}
+            </md-tooltip>
+          </md-button>
 
-        <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+7))" id="cell-year_{{$index+7}}">
-          {{$index+7}}
-          <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+7]">
-            {{vm.yearall[$index+7]}}
-          </md-tooltip>
-        </md-button>
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+6))" id="cell-year_{{$index+6}}">
+            {{$index+6}}
+            <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+6]">
+              {{vm.yearall[$index+6]}}
+            </md-tooltip>
+          </md-button>
 
-        <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+8))" id="cell-year_{{$index+8}}">
-          {{$index+8}}
-          <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+8]">
-            {{vm.yearall[$index+8]}}
-          </md-tooltip>
-        </md-button>
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+7))" id="cell-year_{{$index+7}}">
+            {{$index+7}}
+            <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+7]">
+              {{vm.yearall[$index+7]}}
+            </md-tooltip>
+          </md-button>
 
-        <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+9))" id="cell-year_{{$index+9}}">
-          {{$index+9}}
-          <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+9]">
-            {{vm.yearall[$index+9]}}
-          </md-tooltip>
-        </md-button>
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+8))" id="cell-year_{{$index+8}}">
+            {{$index+8}}
+            <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+8]">
+              {{vm.yearall[$index+8]}}
+            </md-tooltip>
+          </md-button>
 
-        <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+10))" id="cell-year_{{$index+10}}">
-          {{$index+10}}
-          <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+10]">
-            {{vm.yearall[$index+10]}}
-          </md-tooltip>
-        </md-button>
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+9))" id="cell-year_{{$index+9}}">
+            {{$index+9}}
+            <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+9]">
+              {{vm.yearall[$index+9]}}
+            </md-tooltip>
+          </md-button>
 
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+10))" id="cell-year_{{$index+10}}">
+            {{$index+10}}
+            <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+10]">
+              {{vm.yearall[$index+10]}}
+            </md-tooltip>
+          </md-button>
+
+        </div>
       </div>
     </div>
+
+    <div layout="row" layout-align="start end" class="year__legenda__bottom">
+      <i class="material-icons year__legenda__bottom--icon">arrow_back</i>
+      <div class="year__legenda__bottom--text">
+        Turning 90
+      </div>
+    </div>
+
   </div>
+
+
 
   <md-card layout layout-sm="row" layout-padding class="maincard">
     <h2>How do I get a key?</h2>
