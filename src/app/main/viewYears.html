@@ -12,6 +12,15 @@
     </div>
 
     <div layout-align="center center" class="maindiv">
+
+      <div layout="row" layout-align="center center" class="year__legenda__top--divider__div">
+        <h2  class="year__legenda__top--divider">
+          <span class="year__legenda__top--divider--text">
+            Each row is one decade
+          </span>
+        </h2>
+      </div>
+
       <div layout="column" layout-margin layout-align="center center">
 
         <div layout-fill ng-repeat="i in vm.test track by $index" layout="row" ng-if="!(($index ) % 10)">
