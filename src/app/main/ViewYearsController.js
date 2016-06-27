@@ -2,7 +2,7 @@
 
 angular
   .module('keymaker')
-  .controller('ViewYearsController', function ($mdDialog, yearsService) {
+  .controller('ViewYearsController', function ($mdDialog, yearsService, legendaService) {
 
     var vm = this;
     vm.test = new Array(90);
@@ -11,8 +11,11 @@ angular
     function getUserData() {
       yearsService.updateYearTooltip().then(function (res) {
         vm.yearall = res;
-      })
+        // PLACEHOLDER
+      });
     }
+
+
 
     vm.showAdd = function (ev, index) {
 
@@ -47,7 +50,14 @@ angular
                 var myEl = angular.element(document.querySelector('#cell-year_' + index));
                 myEl[0].style['background-color'] = color;
               }
-            })
+            });
+            // PLACEHOLDER
+
+            legendaService.rightLiner(vm.yearall).then(function (res) {
+              vm.categoryName = res;
+              console.log('legendaService vm.categoryName', vm.categoryName);
+            });
+
           }
         }, function (answer) {
         });

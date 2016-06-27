@@ -14,7 +14,7 @@
     <div layout-align="center center" class="maindiv">
 
       <div layout="row" layout-align="center center" class="year__legenda__top--divider__div">
-        <h2  class="year__legenda__top--divider">
+        <h2 class="year__legenda__top--divider">
           <span class="year__legenda__top--divider--text">
             Each row is one decade
           </span>
@@ -95,6 +95,11 @@
               {{vm.yearall[$index+10]}}
             </md-tooltip>
           </md-button>
+
+          <div>
+            {{$index/10}}
+            {{vm.categoryName[$index/10]}}
+          </div>
 
         </div>
       </div>
