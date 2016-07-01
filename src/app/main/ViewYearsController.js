@@ -51,8 +51,8 @@ angular
                 myEl[0].style['background-color'] = color;
               }
             });
-            // PLACEHOLDER
-
+            
+            // TODO: Is it correct place for legendaService?
             legendaService.rightLiner(vm.yearall).then(function (res) {
               vm.categoryName = res;
               console.log('legendaService vm.categoryName', vm.categoryName);

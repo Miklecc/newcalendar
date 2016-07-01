@@ -12,8 +12,19 @@ angular
       var deferred = $q.defer();
 
       userYearData[year] = {'data': data, 'category': category, 'color': color};
-      if (category) {
-        categoryColorAll[color] = category;
+
+      if (category == null) {
+        category = '';
+      }
+
+      // save combo color-category to display in FAB tooltip
+      categoryColorAll[color] = category;
+
+      // if user changes category of color -> re-write the same category to this color in all cells
+      for (var i = 1; i < 91; i++) {
+        if (userYearData[i] && (userYearData[i]['color'] == color)) {
+          userYearData[i]['category'] = category;
+        }
       }
 
       deferred.resolve(userYearData);
