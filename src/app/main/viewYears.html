@@ -96,9 +96,13 @@
             </md-tooltip>
           </md-button>
 
-          <div>
-            {{$index/10}}
-            {{vm.categoryName[$index/10]}}
+          <div layout="row">
+            <h2 flex class="year__legenda__liner--divider" ng-style="{'border-bottom-color': vm.categoryName[$index/10]['color']}">
+            </h2>
+            <div flex class="year__legenda__liner--text" ng-style="{'color': vm.categoryName[$index/10]['color']}">
+              {{$index/10}}
+              {{vm.categoryName[$index/10]['category']}}
+            </div>
           </div>
 
         </div>

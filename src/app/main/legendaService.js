@@ -4,6 +4,12 @@ angular
   .module('keymaker')
   .factory('legendaService', function ($q, _) {
 
+    var items;
+
+    var sendItems = function (res) {
+      items = res;
+    };
+
     var rightLiner = function (dataAll) {
       var deferred = $q.defer();
 
@@ -36,17 +42,24 @@ angular
 
         var popularCategoryName = (_.invert(repeatedCateg))[largest];
 
-        categoryPopular[k - 1] = popularCategoryName;
+        categoryPopular[k - 1] = getCategoryColor(popularCategoryName);
       }
 
-      console.log('categoryPopular = ', categoryPopular);
-
+      // get category color from items and assign it to the category name
+      function getCategoryColor(categoryName) {
+        for (var i = 0; i < items.length; i++) {
+          if (items[i]['name'] == categoryName) {
+            return {category: categoryName, color: items[i]['color']};
+          }
+        }
+      }
       deferred.resolve(categoryPopular);
 
       return deferred.promise;
     };
 
     return {
-      rightLiner: rightLiner
+      rightLiner: rightLiner,
+      sendItems: sendItems
     };
   });

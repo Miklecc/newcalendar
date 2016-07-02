@@ -14,12 +14,6 @@
         <textarea ng-model="vm.yeardata" rows="2" md-maxlength="50" maxlength="50"></textarea>
       </md-input-container>
 
-      <md-input-container class="dialog__content__input">
-        <label>Category</label>
-        <input aria-label=" " flex="70" flex-order="1" ng-model="vm.categoryName">
-        <span aria-label=" " flex="30" flex-order="2"></span>
-      </md-input-container>
-
       <md-input-container layout="column" class="dialog__content__input">
 
         <md-fab-speed-dial md-direction="right" md-open="vm.isOpen"
@@ -48,6 +42,12 @@
 
         </md-fab-speed-dial>
 
+      </md-input-container>
+
+      <md-input-container class="dialog__content__input">
+        <label>Category</label>
+        <input aria-label=" " flex="70" flex-order="1" ng-model="vm.categoryName">
+        <span aria-label=" " flex="30" flex-order="2"></span>
       </md-input-container>
 
     </form>

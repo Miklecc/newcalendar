@@ -164,6 +164,23 @@ section.jumbotron h1 {
   padding: 0 10px;
 }
 
+.year__legenda__liner--divider {
+  text-align: center;
+  line-height: 0.1em;
+  border-bottom: 2px solid;
+  width: 30px;
+}
+
+.year__legenda__liner--text {
+  font-family: Comic Sans MS;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-left: 5px;
+}
+
+
 
 
 /* ---- Dialog: md-fab-speed-dial ----- */

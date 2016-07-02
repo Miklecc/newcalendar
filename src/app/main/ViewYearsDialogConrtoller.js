@@ -4,7 +4,7 @@ angular
   .module('keymaker')
   .controller('DialogController', DialogController);
 
-function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope) {
+function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, legendaService) {
 
   var vm = this;
   vm.yearIndex = yearIndex;
@@ -49,8 +49,7 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope) 
           }
         }
       }
-
-    })
+    });
   }
 
   //TODO: FIX console error "angular.js:13642 TypeError: Cannot read property 'data' of undefined"
@@ -82,6 +81,10 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope) 
         vm.userYearData = res;
       })
     }
+
+    // update again vm.items and pass it to legendaService
+    getCategoryColor();
+    legendaService.sendItems(vm.items);
 
     $mdDialog.hide(vm.yearIndex);
   };
