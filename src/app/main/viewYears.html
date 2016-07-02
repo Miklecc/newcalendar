@@ -96,7 +96,7 @@
             </md-tooltip>
           </md-button>
 
-          <div layout="row">
+          <div layout="row" class="year__legenda__liner fade" ng-if="(($index+10) < 81 && vm.categoryName[$index/10]['category'])">
             <h2 flex class="year__legenda__liner--divider" ng-style="{'border-bottom-color': vm.categoryName[$index/10]['color']}">
             </h2>
             <div flex class="year__legenda__liner--text" ng-style="{'color': vm.categoryName[$index/10]['color']}">
