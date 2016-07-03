@@ -8,22 +8,40 @@ angular
     var categoryColorAll = [];
 
     // call to external storage to save user input
-    var saveYear = function (year, data, category, color) {
+    var saveYear = function (year, data, category, color, yearRange) {
       var deferred = $q.defer();
 
-      userYearData[year] = {'data': data, 'category': category, 'color': color};
+      yearRange = (typeof yearRange === 'undefined') ? 'no' : yearRange;
 
-      if (category == null) {
-        category = '';
+      if (yearRange === 'no') {
+        saveData();
+      } else {
+
+        var range = yearRange.split(":");
+        var startRange = range[0];
+        var endRange = range[1];
+
+       /* for () {
+
+        }*/
+
       }
 
-      // save combo color-category to display in FAB tooltip
-      categoryColorAll[color] = category;
+      function saveData() {
+        userYearData[year] = {'data': data, 'category': category, 'color': color};
 
-      // if user changes category of color -> re-write the same category to this color in all cells
-      for (var i = 1; i < 91; i++) {
-        if (userYearData[i] && (userYearData[i]['color'] == color)) {
-          userYearData[i]['category'] = category;
+        if (category == null) {
+          category = '';
+        }
+
+        // save combo color-category to display in FAB tooltip
+        categoryColorAll[color] = category;
+
+        // if user changes category of color -> re-write the same category to this color in all cells
+        for (var i = 1; i < 91; i++) {
+          if (userYearData[i] && (userYearData[i]['color'] == color)) {
+            userYearData[i]['category'] = category;
+          }
         }
       }
 

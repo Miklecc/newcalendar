@@ -89,9 +89,24 @@ section.jumbotron h1 {
   margin: 0 0 0 0;
 }
 
+.dialog__content__inputFields {
+  width: 244px;
+  height: 74px;
+}
+
+.dialog__content__range--hint {
+  position: fixed;
+  margin-top: 20px;
+}
+
 .dialog__content__input {
-  margin: 1.5rem 0 0.3rem 0;
-  padding: 0;
+/*  margin: 1.5rem 0 0.3rem 0;
+  padding: 0;*/
+}
+
+.dialog__content__range {
+/*  margin: 1.5rem 0 0.3rem 0;
+  padding: 0;*/
 }
 
 .dialog__icon--div {

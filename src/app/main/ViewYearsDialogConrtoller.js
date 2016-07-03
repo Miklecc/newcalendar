@@ -68,7 +68,7 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
   }
 
   vm.hide = function (resp) {
-    $mdDialog.hide(resp);
+    $mdDialog.cancel(resp);
   };
   vm.cancel = function () {
     $mdDialog.cancel();
@@ -77,7 +77,7 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
 
     saveUserData();
     function saveUserData() {
-      yearsService.saveYear(vm.yearIndex, data, category, vm.categoryColor).then(function (res) {
+      yearsService.saveYear(vm.yearIndex, data, category, vm.categoryColor, vm.dialogRange).then(function (res) {
         vm.userYearData = res;
       })
     }
