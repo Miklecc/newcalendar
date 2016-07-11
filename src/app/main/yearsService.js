@@ -8,27 +8,15 @@ angular
     var categoryColorAll = [];
 
     // call to external storage to save user input
-    var saveYear = function (year, data, category, color, yearRange) {
+    var saveYear = function (data, category, color, allIndicies) {
       var deferred = $q.defer();
 
-      yearRange = (typeof yearRange === 'undefined') ? 'no' : yearRange;
-
-      if (yearRange === 'no') {
-        saveData();
-      } else {
-
-        var range = yearRange.split(":");
-        var startRange = range[0];
-        var endRange = range[1];
-
-       /* for () {
-
-        }*/
-
+      for (var i = 0; i < allIndicies.length; i++) {
+        saveData(allIndicies[i]);
       }
 
-      function saveData() {
-        userYearData[year] = {'data': data, 'category': category, 'color': color};
+      function saveData(index) {
+        userYearData[index] = {'data': data, 'category': category, 'color': color};
 
         if (category == null) {
           category = '';

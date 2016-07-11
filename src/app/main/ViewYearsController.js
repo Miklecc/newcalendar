@@ -15,17 +15,14 @@ angular
       });
     }
 
-
-
     vm.showAdd = function (ev, index) {
 
       vm.yearIndex = index;
-      //  var parentEl = angular.element(document.querySelector('.cell-year_'+index));
+
       // calling dialog
       $mdDialog.show({
         controller: 'DialogController',
         templateUrl: 'app/main/viewYearsDialog.html',
-        //  parent: parentEl,
         targetEvent: ev,
         hasBackdrop: false,
         clickOutsideToClose: true,
@@ -37,27 +34,33 @@ angular
           yearIndex: this.yearIndex
         }
       })
-        .then(function (cellIndex) {
+        .then(function (allIndices) {
+
+          var indices = allIndices;
+          console.log('allIndices', allIndices);
 
           // updating element color & request from yearService
           getUserData();
           function getUserData() {
-            yearsService.updateYearByIndex(cellIndex).then(function (res) {
+            yearsService.updateYearByIndex(vm.yearIndex).then(function (res) {
+
+              // check if user clicked save in Dialog
               if (res) {
-                var res = res;
                 var color = res['color'];
-                var index = cellIndex;
-                var myEl = angular.element(document.querySelector('#cell-year_' + index));
-                myEl[0].style['background-color'] = color;
+
+                // assign color of clicked element to colors of all elements in Range
+                for (var i = 0; i < indices.length; i++) {
+                  var myEl = angular.element(document.querySelector('#cell-year_' + indices[i]));
+                  myEl[0].style['background-color'] = color;
+                }
               }
             });
-            
+
             // TODO: Is it correct place for legendaService?
             legendaService.rightLiner(vm.yearall).then(function (res) {
               vm.categoryName = res;
               console.log('legendaService vm.categoryName', vm.categoryName);
             });
-
           }
         }, function (answer) {
         });

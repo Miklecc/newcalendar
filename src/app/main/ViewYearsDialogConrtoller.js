@@ -75,9 +75,30 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
   };
   vm.save = function (data, category) {
 
+    var allIndices = [];
+
+    vm.dialogRange = (typeof vm.dialogRange === 'undefined') ? 'no' : vm.dialogRange;
+
+    if (vm.dialogRange === 'no') {
+      allIndices.push(vm.yearIndex);
+    } else {
+      allIndices.push(vm.yearIndex);
+      concatIndexRange();
+    }
+
+    function concatIndexRange () {
+      var range = vm.dialogRange.split("-");
+      var startRange = range[0];
+      var endRange = range[1];
+      for (var i = startRange; i <= endRange; i++) {
+        i = parseInt(i);
+        allIndices.push(i);
+      }
+    }
+
     saveUserData();
     function saveUserData() {
-      yearsService.saveYear(vm.yearIndex, data, category, vm.categoryColor, vm.dialogRange).then(function (res) {
+      yearsService.saveYear(data, category, vm.categoryColor, allIndices).then(function (res) {
         vm.userYearData = res;
       })
     }
@@ -85,7 +106,6 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
     // update again vm.items and pass it to legendaService
     getCategoryColor();
     legendaService.sendItems(vm.items);
-
-    $mdDialog.hide(vm.yearIndex);
+    $mdDialog.hide(allIndices);
   };
 }
