@@ -29,8 +29,10 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
     {name: "", direction: "bottom", color: 'blue'}
   ];
 
-  vm.setColor = function (color) {
+  // save chosen color and fill category input field with category value, assigned to color (or empty)
+  vm.setColor = function (color, category) {
     vm.categoryColor = color;
+    vm.categoryName = category;
   };
 
   // updating categoryColorAll from yearService to display in FAB button Tooltips the latest
@@ -59,7 +61,6 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
     yearsService.updateYearByIndex(vm.yearIndex).then(function (res) {
       // check if there is data in the cell, saved by user
       if (res) {
-        var res = res;
         vm.yeardata = res['data'];
         vm.categoryName = res['category'];
         vm.categoryColor = res['color'];

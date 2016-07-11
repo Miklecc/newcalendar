@@ -31,7 +31,7 @@
 
           <md-fab-actions>
             <div ng-repeat="item in vm.items">
-              <md-button aria-label="{{item.name}}" ng-click="vm.setColor(item.color)" class="dialog__fab--button" >
+              <md-button aria-label="{{item.name}}" ng-click="vm.setColor(item.color, item.name)" class="dialog__fab--button" >
                 <i class="material-icons dialog__fab--icon" ng-style="{'color': '{{item.color}}'}">opacity</i>
                 <md-tooltip ng-if="item.name" md-direction="{{item.direction}}" md-visible="tooltipVisible" md-autohide="false">
                   {{item.name}}
