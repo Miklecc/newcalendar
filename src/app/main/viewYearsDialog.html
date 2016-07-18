@@ -48,7 +48,7 @@
       <div layout="row" class="dialog__content__inputFields">
         <md-input-container flex="35" class="dialog__content__range">
           <label>Years' range</label>
-          <input name="social" ng-model="vm.dialogRange" ng-pattern="/^[1-9]{2}-[0-9]{2}|[1-9]-[0-9]{2}|[1-9]-[2-9]$/" />
+          <input name="social" ng-model="vm.dialogRange" ng-pattern="/^[1-9][0-9]-[0-9]{2}|[1-9]-[0-9]{2}|[1-9]-[2-9]$/" />
           <div class="hint" ng-if="showHints">xX-xX</div>
           <div  ng-messages="userForm.social.$error" ng-if="!showHints">
             <div class="dialog__content__range--hint" ng-message="pattern">xX-xX - Please enter a valid range.</div>

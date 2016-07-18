@@ -14,47 +14,66 @@ angular
       var deferred = $q.defer();
 
       var categoryPopular = [];
-      var i = 1;
+      var iCateg = 1;
+      var iCol = 1;
 
       for (var k = 1; k <= 9; k++) {
 
         var categoryRow = [];
+        var repeatedCateg = {};
+        var numberOfRepetitions = [];
 
-        for (i; i <= 10 * k; i++) {
+        var colorRow = [];
+        var repeatedColor = {};
+        var numberOfRepetitionsColor = [];
 
-          if (dataAll[i]) {
-            var category = dataAll[i]['category'];
+        // most repeated category Finder
+
+        for (iCateg; iCateg <= 10 * k; iCateg++) {
+          if (dataAll[iCateg]) {
+            var category = dataAll[iCateg]['category'];
             categoryRow.push(category);
           }
         }
 
-        var repeatedCateg = {};
         categoryRow.forEach(function (x) {
           repeatedCateg[x] = (repeatedCateg[x] || 0) + 1;
         });
 
-        var numberOfRepetitions = [];
         for (var o in repeatedCateg) {
           numberOfRepetitions.push(repeatedCateg[o]);
         }
 
-        var largest = Math.max.apply(Math, numberOfRepetitions);
+        var largestKey = Math.max.apply(Math, numberOfRepetitions);
+        var largestValue = (_.invert(repeatedCateg))[largestKey];
 
-        var popularCategoryName = (_.invert(repeatedCateg))[largest];
+        // most repeated color Finder
 
-        categoryPopular[k - 1] = getCategoryColor(popularCategoryName);
-      }
-
-      // get category color from items and assign it to the category name
-      function getCategoryColor(categoryName) {
-        for (var i = 0; i < items.length; i++) {
-          if (items[i]['name'] == categoryName) {
-            return {category: categoryName, color: items[i]['color']};
+        for (iCol; iCol <= 10 * k; iCol++) {
+          if (dataAll[iCol]) {
+            var color = dataAll[iCol]['color'];
+            colorRow.push(color);
           }
         }
-      }
-      deferred.resolve(categoryPopular);
 
+        colorRow.forEach(function (x) {
+          repeatedColor[x] = (repeatedColor[x] || 0) + 1;
+        });
+
+        for (var o in repeatedColor) {
+          numberOfRepetitionsColor.push(repeatedColor[o]);
+        }
+
+        var largestKeyColor = Math.max.apply(Math, numberOfRepetitionsColor);
+        var largestValueColor = (_.invert(repeatedColor))[largestKeyColor];
+
+        // assign the most repeated value and color
+        if (largestValue) {
+          categoryPopular[k - 1] = {category: largestValue, color: largestValueColor};
+        }
+      }
+
+      deferred.resolve(categoryPopular);
       return deferred.promise;
     };
 

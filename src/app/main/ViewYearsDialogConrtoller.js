@@ -32,7 +32,9 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
   // save chosen color and fill category input field with category value, assigned to color (or empty)
   vm.setColor = function (color, category) {
     vm.categoryColor = color;
-    vm.categoryName = category;
+    if (category !== '') {
+      vm.categoryName = category;
+    }
   };
 
   // updating categoryColorAll from yearService to display in FAB button Tooltips the latest
