@@ -122,6 +122,21 @@ section.jumbotron h1 {
   padding: 0;
 }
 
+/* ---- Year View : Tooltip ----- */
+
+md-tooltip .md-content {
+  max-width: 70px;
+  height: auto;
+  white-space: normal;
+  word-break: break-all;
+}
+
+@media screen and (min-width: 960px) {
+  md-tooltip .md-content {
+    height: auto;
+  }
+}
+
 /* ---- Year View : Legenda ----- */
 
 .year__legenda__top {
