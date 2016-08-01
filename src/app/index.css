@@ -28,10 +28,6 @@ html {
   width: 50px;
 }
 
-/*md-toolbar.md-default-theme {
-  background-color: #97C766;
-}*/
-
 section.jumbotron {
   margin-bottom: 30px;
   padding: 1px 30px;
@@ -50,19 +46,9 @@ section.jumbotron h1 {
   flex-flow: row wrap;
 }
 
-/*.techs md-card {
-  width: 30%;
-}
-
-.techs md-card img.pull-right {
-  float: right;
-  width: 50px;
-}*/
-
 .maincard {
   max-width: 70rem;
 }
-
 
 /* ---- my stuff ----- */
 
@@ -89,24 +75,14 @@ section.jumbotron h1 {
   margin: 0 0 0 0;
 }
 
-.dialog__content__inputFields {
+.dialog__content__input {
   width: 244px;
   height: 74px;
 }
 
-.dialog__content__range--hint {
+.dialog__content__range {
   position: fixed;
   margin-top: 20px;
-}
-
-.dialog__content__input {
-/*  margin: 1.5rem 0 0.3rem 0;
-  padding: 0;*/
-}
-
-.dialog__content__range {
-/*  margin: 1.5rem 0 0.3rem 0;
-  padding: 0;*/
 }
 
 .dialog__icon--div {
@@ -186,6 +162,7 @@ md-tooltip .md-content {
   border-bottom: 2px solid #ff5d1a;
   width: 434px;
 }
+
 .year__legenda__top--divider--text {
   font-family: Comic Sans MS;
   font-size: 18px;
@@ -237,8 +214,6 @@ md-tooltip .md-content {
   opacity: 0;
 }
 
-
-
 /* ---- Dialog: md-fab-speed-dial ----- */
 
 .dialog__fab--button {
@@ -253,11 +228,25 @@ md-tooltip .md-content {
   font-size: 2.5rem;
 }
 
-.dialogFabIconRed { color: red }
-.dialogFabIconBlue { color: blue }
-.dialogFabIconGreen { color: green }
-.dialogFabIconPink { color: pink }
-.dialogFabIconOrange { color: orange }
+.dialogFabIconRed {
+  color: red
+}
+
+.dialogFabIconBlue {
+  color: blue
+}
+
+.dialogFabIconGreen {
+  color: green
+}
+
+.dialogFabIconPink {
+  color: pink
+}
+
+.dialogFabIconOrange {
+  color: orange
+}
 
 .md-button.md-fab {
   width: 2rem;
@@ -274,6 +263,3 @@ md-tooltip .md-content {
   right: 2rem;
   bottom: 2.62rem;
 }
-
-
-
