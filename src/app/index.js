@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('keymaker', ['ngAnimate', 'ngCookies', 'ngSanitize', 'ngResource', 'ui.router', 'ngMaterial', 'ngMessages'])
+angular.module('keymaker', ['ngAnimate', 'ngCookies', 'ngSanitize', 'ngResource', 'ui.router', 'ngMaterial', 'ngMessages', 'ngStorage'])
 // allow DI for use in controllers, unit tests
   .constant('_', window._)
   // use in views, ng-repeat="x in _.range(3)"

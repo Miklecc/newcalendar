@@ -2,10 +2,25 @@
 
 angular
   .module('keymaker')
-  .factory('yearsService', function ($q) {
+  .factory('yearsService', function ($q, $localStorage) {
 
-    var userYearData = [];
-    var categoryColorAll = [];
+    var userYearData;
+    var categoryColorAll;
+
+    // initialize $localStorage
+    var storage = $localStorage.$default({
+      userYearData: [],
+      categoryColorAll: []
+    });
+
+    updateLocalStorage();
+
+    console.log(storage);
+
+    function updateLocalStorage() {
+      userYearData = storage.userYearData;
+      categoryColorAll = storage.categoryColorAll;
+    }
 
     // call to external storage to save user input
     var saveYear = function (data, category, color, allIndicies) {
@@ -33,6 +48,8 @@ angular
         }
       }
 
+      updateLocalStorage();
+
       deferred.resolve(userYearData);
       return deferred.promise;
     };
@@ -56,6 +73,8 @@ angular
     var updateCategoryColor = function() {
       var deferred = $q.defer();
       var categoryColor = categoryColorAll;
+
+      updateLocalStorage();
 
       deferred.resolve(categoryColor);
       return deferred.promise;
