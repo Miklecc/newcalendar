@@ -212,6 +212,7 @@ md-tooltip .md-content {
   flex-direction: column;
   text-align: center;
   margin-left: 5px;
+  white-space: nowrap;
 }
 
 /* ---- Year View : Legenda : animations ----- */
