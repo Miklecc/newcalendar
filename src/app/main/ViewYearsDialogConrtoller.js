@@ -44,6 +44,8 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
     yearsService.updateCategoryColor().then(function (res) {
       var categoryColorAll = res;
 
+      console.log(' ---- DialogController getCategoryColor', res);
+
       for (var key in categoryColorAll) {
         if (categoryColorAll.hasOwnProperty(key)) {
           for (var i = 0; i < vm.items.length; i++) {
@@ -56,7 +58,6 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
     });
   }
 
-  //TODO: FIX console error "angular.js:13642 TypeError: Cannot read property 'data' of undefined"
   // displaying filled fields if user already entered something
   getUserData();
   function getUserData() {
@@ -68,6 +69,8 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
         vm.categoryColor = res['color'];
       }
     })
+
+
   }
 
   vm.hide = function (resp) {
@@ -76,7 +79,7 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
   vm.cancel = function () {
     $mdDialog.cancel();
   };
-  vm.save = function (data, category) {
+  vm.save = function (data, category, color) {
 
     var allIndices = [];
 
@@ -101,7 +104,7 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
 
     saveUserData();
     function saveUserData() {
-      yearsService.saveYear(data, category, vm.categoryColor, allIndices).then(function (res) {
+      yearsService.saveYear(data, category, color, allIndices).then(function (res) {
         vm.userYearData = res;
       })
     }

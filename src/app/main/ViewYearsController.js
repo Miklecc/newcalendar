@@ -11,7 +11,12 @@ angular
     function getUserData() {
       yearsService.updateYearTooltip().then(function (res) {
         vm.yearall = res;
-        // PLACEHOLDER
+        updateUserDataFromLocalStorage();
+      });
+    }
+    function updateUserDataFromLocalStorage() {
+      legendaService.rightLiner(vm.yearall).then(function (res) {
+        vm.categoryName = res;
       });
     }
 
@@ -56,11 +61,7 @@ angular
               }
             });
 
-            // TODO: Is it correct place for legendaService?
-            legendaService.rightLiner(vm.yearall).then(function (res) {
-              vm.categoryName = res;
-              console.log('legendaService vm.categoryName', vm.categoryName);
-            });
+            updateUserDataFromLocalStorage();
           }
         }, function (answer) {
         });

@@ -4,23 +4,18 @@ angular
   .module('keymaker')
   .factory('yearsService', function ($q, $localStorage) {
 
-    var userYearData;
-    var categoryColorAll;
-
     // initialize $localStorage
     var storage = $localStorage.$default({
       userYearData: [],
-      categoryColorAll: []
+      categoryColorAll: {}
     });
 
-    updateLocalStorage();
+    var userYearData = storage.userYearData || [];
+    var categoryColorAll = { red: "33" } || storage.categoryColorAll;
+
+    console.log('service COLORS ++++ ', categoryColorAll, storage.categoryColorAll);
 
     console.log(storage);
-
-    function updateLocalStorage() {
-      userYearData = storage.userYearData;
-      categoryColorAll = storage.categoryColorAll;
-    }
 
     // call to external storage to save user input
     var saveYear = function (data, category, color, allIndicies) {
@@ -39,6 +34,7 @@ angular
 
         // save combo color-category to display in FAB tooltip
         categoryColorAll[color] = category;
+        storage.categoryColorAll = categoryColorAll;
 
         // if user changes category of color -> re-write the same category to this color in all cells
         for (var i = 1; i < 91; i++) {
@@ -48,7 +44,7 @@ angular
         }
       }
 
-      updateLocalStorage();
+      storage.userYearData = userYearData;
 
       deferred.resolve(userYearData);
       return deferred.promise;
@@ -64,19 +60,18 @@ angular
 
     var updateYearByIndex = function (year) {
       var deferred = $q.defer();
-      var inputValue = userYearData[year];
 
+      var inputValue = userYearData[year];
       deferred.resolve(inputValue);
       return deferred.promise;
     };
 
     var updateCategoryColor = function() {
       var deferred = $q.defer();
-      var categoryColor = categoryColorAll;
 
-      updateLocalStorage();
+      // console.log('service updateCategoryColor ++++ ', categoryColorAll);
 
-      deferred.resolve(categoryColor);
+      deferred.resolve(categoryColorAll);
       return deferred.promise;
     } ;
 
