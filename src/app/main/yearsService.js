@@ -11,11 +11,7 @@ angular
     });
 
     var userYearData = storage.userYearData || [];
-    var categoryColorAll = { red: "33" } || storage.categoryColorAll;
-
-    console.log('service COLORS ++++ ', categoryColorAll, storage.categoryColorAll);
-
-    console.log(storage);
+    var categoryColorAll = storage.categoryColorAll || {};
 
     // call to external storage to save user input
     var saveYear = function (data, category, color, allIndicies) {
@@ -68,8 +64,6 @@ angular
 
     var updateCategoryColor = function() {
       var deferred = $q.defer();
-
-      // console.log('service updateCategoryColor ++++ ', categoryColorAll);
 
       deferred.resolve(categoryColorAll);
       return deferred.promise;

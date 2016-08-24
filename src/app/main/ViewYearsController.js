@@ -2,21 +2,37 @@
 
 angular
   .module('keymaker')
-  .controller('ViewYearsController', function ($mdDialog, yearsService, legendaService) {
+  .controller('ViewYearsController', function ($mdDialog, yearsService, legendaService, _) {
 
     var vm = this;
     vm.test = new Array(90);
 
-    getUserData();
-    function getUserData() {
+    angular.element(document).ready(function () {
+      updateUserData();
+    });
+
+    function updateUserData() {
       yearsService.updateYearTooltip().then(function (res) {
         vm.yearall = res;
-        updateUserDataFromLocalStorage();
+        updateCellColors();
+        updateRightLinerFromLocalStorage();
       });
     }
-    function updateUserDataFromLocalStorage() {
+
+    function updateRightLinerFromLocalStorage() {
       legendaService.rightLiner(vm.yearall).then(function (res) {
         vm.categoryName = res;
+      });
+    }
+
+    function updateCellColors() {
+      var nonEmptyUserDataObject = _.pickBy(vm.yearall, _.isObject);
+      var comboCellNumberColor = _.mapValues(nonEmptyUserDataObject, function (o) {
+        return o.color;
+      });
+      _.forEach(comboCellNumberColor, function (value, key) {
+        var myEl = angular.element(document.querySelector('#cell-year_' + key));
+        myEl[0].style['background-color'] = value;
       });
     }
 
@@ -26,23 +42,22 @@ angular
 
       // calling dialog
       $mdDialog.show({
-        controller: 'DialogController',
-        templateUrl: 'app/main/viewYearsDialog.html',
-        targetEvent: ev,
-        hasBackdrop: false,
-        clickOutsideToClose: true,
-        escapeToClose: true,
-        bindToController: true,
-        disableParentScroll: false,
-        controllerAs: 'vm',
-        locals: {
-          yearIndex: this.yearIndex
-        }
-      })
+          controller: 'DialogController',
+          templateUrl: 'app/main/viewYearsDialog.html',
+          targetEvent: ev,
+          hasBackdrop: false,
+          clickOutsideToClose: true,
+          escapeToClose: true,
+          bindToController: true,
+          disableParentScroll: false,
+          controllerAs: 'vm',
+          locals: {
+            yearIndex: this.yearIndex
+          }
+        })
         .then(function (allIndices) {
 
           var indices = allIndices;
-          console.log('allIndices', allIndices);
 
           // updating element color & request from yearService
           getUserData();
@@ -61,7 +76,7 @@ angular
               }
             });
 
-            updateUserDataFromLocalStorage();
+            updateRightLinerFromLocalStorage();
           }
         }, function (answer) {
         });

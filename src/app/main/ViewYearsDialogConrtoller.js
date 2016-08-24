@@ -44,8 +44,6 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
     yearsService.updateCategoryColor().then(function (res) {
       var categoryColorAll = res;
 
-      console.log(' ---- DialogController getCategoryColor', res);
-
       for (var key in categoryColorAll) {
         if (categoryColorAll.hasOwnProperty(key)) {
           for (var i = 0; i < vm.items.length; i++) {
