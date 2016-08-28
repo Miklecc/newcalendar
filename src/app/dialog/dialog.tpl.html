@@ -1,4 +1,4 @@
-<md-dialog aria-label="Mango (Fruit)">
+<md-dialog aria-label="dialog">
 
   <md-content class="md-padding dialog__content">
 
@@ -30,7 +30,7 @@
           </md-fab-trigger>
 
           <md-fab-actions>
-            <div ng-repeat="item in vm.items">
+            <div ng-repeat="item in vm.categories">
               <md-button aria-label="{{item.name}}" ng-click="vm.setColor(item.color, item.name)"
                          class="dialog__fab--button">
                 <i class="material-icons dialog__fab--icon" ng-style="{'color': '{{item.color}}'}">opacity</i>
@@ -63,8 +63,6 @@
           <span aria-label=" " flex="30" flex-order="2"></span>
         </md-input-container>
       </div>
-
-
     </form>
   </md-content>
 

@@ -7,11 +7,20 @@ angular
 function lifeCalendarDialogController($mdDialog, yearIndex, lifeCalendarUserDataService, $timeout, $scope, lifeCalendarLinerService) {
 
   var vm = this;
+  vm.setColor = setcolor;
+  vm.hide = hide;
+  vm.cancel = cancel;
+  vm.save = save;
   vm.yearIndex = yearIndex;
-
   vm.isOpen = false;
-  // On opening, add a delayed property which shows tooltips after the speed dial has opened
-  // so that they have the proper position; if closing, immediately hide the tooltips
+  vm.categories = [
+    {name: "", direction: "bottom", color: 'red'},
+    {name: "", direction: "top", color: 'pink'},
+    {name: "", direction: "bottom", color: 'green'},
+    {name: "", direction: "top", color: 'orange'},
+    {name: "", direction: "bottom", color: 'blue'}
+  ];
+
   $scope.$watch('vm.isOpen', function (isOpen) {
     if (isOpen) {
       $timeout(function () {
@@ -21,43 +30,11 @@ function lifeCalendarDialogController($mdDialog, yearIndex, lifeCalendarUserData
       $scope.tooltipVisible = vm.isOpen;
     }
   });
-  vm.items = [
-    {name: "", direction: "bottom", color: 'red'},
-    {name: "", direction: "top", color: 'pink'},
-    {name: "", direction: "bottom", color: 'green'},
-    {name: "", direction: "top", color: 'orange'},
-    {name: "", direction: "bottom", color: 'blue'}
-  ];
 
-  // save chosen color and fill category input field with category value, assigned to color (or empty)
-  vm.setColor = function (color, category) {
-    vm.categoryColor = color;
-    if (category !== '') {
-      vm.categoryName = category;
-    }
-  };
-
-  // updating categoryColorAll from yearService to display in FAB button Tooltips the latest
-  // combination color-category entered by user
   getCategoryColor();
-  function getCategoryColor() {
-    lifeCalendarUserDataService.updateCategoryColor().then(function (res) {
-      var categoryColorAll = res;
-
-      for (var key in categoryColorAll) {
-        if (categoryColorAll.hasOwnProperty(key)) {
-          for (var i = 0; i < vm.items.length; i++) {
-            if (vm.items[i]['color'] === key) {
-              vm.items[i]['name'] = categoryColorAll[key];
-            }
-          }
-        }
-      }
-    });
-  }
+  getUserData();
 
   // displaying filled fields if user already entered something
-  getUserData();
   function getUserData() {
     lifeCalendarUserDataService.updateYearByIndex(vm.yearIndex).then(function (res) {
       // check if there is data in the cell, saved by user
@@ -67,20 +44,58 @@ function lifeCalendarDialogController($mdDialog, yearIndex, lifeCalendarUserData
         vm.categoryColor = res['color'];
       }
     })
-
-
   }
 
-  vm.hide = function (resp) {
-    $mdDialog.cancel(resp);
-  };
-  vm.cancel = function () {
-    $mdDialog.cancel();
-  };
-  vm.save = function (data, category, color) {
+  // save chosen color and fill category input field with category value, assigned to color (or empty)
+  function setcolor(color, category) {
+    vm.categoryColor = color;
+    if (category !== '') {
+      vm.categoryName = category;
+    }
+  }
 
+  function hide(resp) {
+    $mdDialog.cancel(resp);
+  }
+
+  function cancel() {
+    $mdDialog.cancel();
+  }
+
+  function save(data, category, color) {
     var allIndices = [];
 
+    getRangeOfCells(allIndices);
+
+    lifeCalendarUserDataService.saveYear(data, category, color, allIndices).then(function (res) {
+      vm.userYearData = res;
+    });
+
+    // update again vm.categories and pass it to lifeCalendarLinerService
+    getCategoryColor();
+    lifeCalendarLinerService.sendItems(vm.categories);
+    $mdDialog.hide(allIndices);
+  }
+
+  // updating categoryColorAll from lifeCalendarUserDataService to display in FAB button Tooltips the latest
+  // combination color-category entered by user
+  function getCategoryColor() {
+    lifeCalendarUserDataService.updateCategoryColor().then(function (res) {
+      var categoryColorAll = res;
+
+      for (var key in categoryColorAll) {
+        if (categoryColorAll.hasOwnProperty(key)) {
+          for (var i = 0; i < vm.categories.length; i++) {
+            if (vm.categories[i]['color'] === key) {
+              vm.categories[i]['name'] = categoryColorAll[key];
+            }
+          }
+        }
+      }
+    });
+  }
+
+  function getRangeOfCells(allIndices) {
     vm.dialogRange = (typeof vm.dialogRange === 'undefined') ? 'no' : vm.dialogRange;
 
     if (vm.dialogRange === 'no') {
@@ -90,7 +105,7 @@ function lifeCalendarDialogController($mdDialog, yearIndex, lifeCalendarUserData
       concatIndexRange();
     }
 
-    function concatIndexRange () {
+    function concatIndexRange() {
       var range = vm.dialogRange.split("-");
       var startRange = range[0];
       var endRange = range[1];
@@ -100,16 +115,6 @@ function lifeCalendarDialogController($mdDialog, yearIndex, lifeCalendarUserData
       }
     }
 
-    saveUserData();
-    function saveUserData() {
-      lifeCalendarUserDataService.saveYear(data, category, color, allIndices).then(function (res) {
-        vm.userYearData = res;
-      })
-    }
-
-    // update again vm.items and pass it to lifeCalendarLinerService
-    getCategoryColor();
-    lifeCalendarLinerService.sendItems(vm.items);
-    $mdDialog.hide(allIndices);
-  };
+    return allIndices;
+  }
 }
