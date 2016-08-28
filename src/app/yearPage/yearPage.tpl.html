@@ -1,7 +1,6 @@
-<header ng-include="'app/components/navbar/navbar.html'"></header>
+<life-calendar-navbar></life-calendar-navbar>
 
 <div layout="column" layout-fill layout-align="center center" class="layoutdiv">
-
   <div layout="row">
 
     <div layout="row" layout-align="end start" class="year__legenda__top">
@@ -23,17 +22,17 @@
 
       <div layout="column" layout-margin layout-align="center center">
 
-        <div layout-fill ng-repeat="i in vm.test track by $index" layout="row" ng-if="!(($index ) % 10)">
+        <div layout-fill ng-repeat="i in vm.cellArray track by $index" layout="row" ng-if="!(($index ) % 10)">
 
           <md-button layout-fill class="md-raised maindiv__button"
-                     ng-click="vm.showAdd($event, ($index+1))" id="cell-year_{{$index+1}}">
+                     ng-click="vm.showDialog($event, ($index+1))" id="cell-year_{{$index+1}}">
             {{$index+1}}
             <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+1]">
               {{vm.yearall[$index+1]}}
             </md-tooltip>
           </md-button>
 
-          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+2))"
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showDialog($event, ($index+2))"
                      id="cell-year_{{$index+2}}">
             {{$index+2}}
             <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+2]">
@@ -41,7 +40,7 @@
             </md-tooltip>
           </md-button>
 
-          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+3))"
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showDialog($event, ($index+3))"
                      id="cell-year_{{$index+3}}">
             {{$index+3}}
             <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+3]">
@@ -49,7 +48,7 @@
             </md-tooltip>
           </md-button>
 
-          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+4))"
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showDialog($event, ($index+4))"
                      id="cell-year_{{$index+4}}">
             {{$index+4}}
             <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+4]">
@@ -57,7 +56,7 @@
             </md-tooltip>
           </md-button>
 
-          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+5))"
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showDialog($event, ($index+5))"
                      id="cell-year_{{$index+5}}">
             {{$index+5}}
             <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+5]">
@@ -65,7 +64,7 @@
             </md-tooltip>
           </md-button>
 
-          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+6))"
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showDialog($event, ($index+6))"
                      id="cell-year_{{$index+6}}">
             {{$index+6}}
             <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+6]">
@@ -73,7 +72,7 @@
             </md-tooltip>
           </md-button>
 
-          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+7))"
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showDialog($event, ($index+7))"
                      id="cell-year_{{$index+7}}">
             {{$index+7}}
             <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+7]">
@@ -81,7 +80,7 @@
             </md-tooltip>
           </md-button>
 
-          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+8))"
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showDialog($event, ($index+8))"
                      id="cell-year_{{$index+8}}">
             {{$index+8}}
             <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+8]">
@@ -89,7 +88,7 @@
             </md-tooltip>
           </md-button>
 
-          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+9))"
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showDialog($event, ($index+9))"
                      id="cell-year_{{$index+9}}">
             {{$index+9}}
             <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+9]">
@@ -97,7 +96,7 @@
             </md-tooltip>
           </md-button>
 
-          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showAdd($event, ($index+10))"
+          <md-button layout-fill class="md-raised maindiv__button" ng-click="vm.showDialog($event, ($index+10))"
                      id="cell-year_{{$index+10}}">
             {{$index+10}}
             <md-tooltip md-direction="top" md-delay="5" ng-if="vm.yearall[$index+10]">
@@ -119,7 +118,6 @@
           </div>
 
 
-
         </div>
       </div>
     </div>
@@ -132,61 +130,10 @@
     </div>
 
   </div>
-
-
-  <md-card layout layout-sm="row" layout-padding class="maincard">
-    <h2>How do I get a key?</h2>
-    <p>
-      Fill out some quick details, and request yourself an API key!
-    </p>
-  </md-card>
-
-  <md-card layout-padding class="maincard">
-    <div ng-controller="FormCtrl">
-      <h2> Request a Key </h2>
-      <form name="userForm">
-
-        <div layout layout-sm="column">
-          <md-input-container flex>
-            <label>First name</label>
-            <input ng-model="user.firstName">
-          </md-input-container>
-          <md-input-container flex>
-            <label>Last Name</label>
-            <input ng-model="user.lastName">
-          </md-input-container>
-        </div>
-
-        <md-input-container flex>
-          <label>Company</label>
-          <input ng-model="user.company">
-        </md-input-container>
-
-        <md-input-container flex>
-          <label>Phone</label>
-          <input ng-model="user.phone">
-        </md-input-container>
-
-        <section layout="row" layout-sm="column">
-          <md-button class="md-raised md-primary">Request Key</md-button>
-        </section>
-      </form>
-    </div>
-  </md-card>
-
-  <md-card layout layout-sm="column" layout-padding class="maincard">
-    <h2>Keymaker</h2>
-    <p class="lead">
-      <img src="assets/images/keymaker.jpg" class="cardnail"><br>
-      We do only what we're meant to do.
-    </p>
-  </md-card>
-
-
 </div>
 
 <footer>
   <md-toolbar layout="row" layout-align="center center">
-    <p>With ♥ from doc</p>
+    <div>With ♥ from doc</div>
   </md-toolbar>
 </footer>

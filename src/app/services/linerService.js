@@ -1,8 +1,8 @@
 'use strict';
 
 angular
-  .module('keymaker')
-  .factory('legendaService', function ($q, _) {
+  .module('life-calendar')
+  .factory('lifeCalendarLinerService', function ($q, _) {
 
     var items;
 
