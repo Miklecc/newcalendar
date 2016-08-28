@@ -1,8 +1,8 @@
 'use strict';
 
 angular
-  .module('keymaker')
-  .factory('yearsService', function ($q, $localStorage) {
+  .module('life-calendar')
+  .factory('lifeCalendarUserDataService', function ($q, $localStorage) {
 
     // initialize $localStorage
     var storage = $localStorage.$default({
@@ -62,12 +62,12 @@ angular
       return deferred.promise;
     };
 
-    var updateCategoryColor = function() {
+    var updateCategoryColor = function () {
       var deferred = $q.defer();
 
       deferred.resolve(categoryColorAll);
       return deferred.promise;
-    } ;
+    };
 
     return {
       saveYear: saveYear,

@@ -1,10 +1,10 @@
 'use strict';
 
 angular
-  .module('keymaker')
-  .controller('DialogController', DialogController);
+  .module('life-calendar')
+  .controller('lifeCalendarDialogController', lifeCalendarDialogController);
 
-function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, legendaService) {
+function lifeCalendarDialogController($mdDialog, yearIndex, lifeCalendarUserDataService, $timeout, $scope, lifeCalendarLinerService) {
 
   var vm = this;
   vm.yearIndex = yearIndex;
@@ -41,7 +41,7 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
   // combination color-category entered by user
   getCategoryColor();
   function getCategoryColor() {
-    yearsService.updateCategoryColor().then(function (res) {
+    lifeCalendarUserDataService.updateCategoryColor().then(function (res) {
       var categoryColorAll = res;
 
       for (var key in categoryColorAll) {
@@ -59,7 +59,7 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
   // displaying filled fields if user already entered something
   getUserData();
   function getUserData() {
-    yearsService.updateYearByIndex(vm.yearIndex).then(function (res) {
+    lifeCalendarUserDataService.updateYearByIndex(vm.yearIndex).then(function (res) {
       // check if there is data in the cell, saved by user
       if (res) {
         vm.yeardata = res['data'];
@@ -102,14 +102,14 @@ function DialogController($mdDialog, yearIndex, yearsService, $timeout, $scope, 
 
     saveUserData();
     function saveUserData() {
-      yearsService.saveYear(data, category, color, allIndices).then(function (res) {
+      lifeCalendarUserDataService.saveYear(data, category, color, allIndices).then(function (res) {
         vm.userYearData = res;
       })
     }
 
-    // update again vm.items and pass it to legendaService
+    // update again vm.items and pass it to lifeCalendarLinerService
     getCategoryColor();
-    legendaService.sendItems(vm.items);
+    lifeCalendarLinerService.sendItems(vm.items);
     $mdDialog.hide(allIndices);
   };
 }
