@@ -46,7 +46,7 @@ angular
       return deferred.promise;
     };
 
-    var updateYearTooltip = function () {
+    var getUserData = function () {
       var deferred = $q.defer();
 
       deferred.resolve(userYearData);
@@ -71,7 +71,7 @@ angular
 
     return {
       saveYear: saveYear,
-      updateYearTooltip: updateYearTooltip,
+      getUserData: getUserData,
       updateCategoryColor: updateCategoryColor,
       updateYearByIndex: updateYearByIndex
     }

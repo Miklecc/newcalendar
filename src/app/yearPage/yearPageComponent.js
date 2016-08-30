@@ -19,7 +19,7 @@ function LifeCalendarYearPageController($mdDialog, lifeCalendarUserDataService, 
   });
 
   function updateUserData() {
-    lifeCalendarUserDataService.updateYearTooltip().then(function (res) {
+    lifeCalendarUserDataService.getUserData().then(function (res) {
       vm.yearall = res;
       updateCellColors();
       updateRightLinerFromLocalStorage();

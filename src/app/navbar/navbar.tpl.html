@@ -4,13 +4,14 @@
       <span>Life calendar</span>
     </h2>
     <span flex></span>
-    <!-- TODO: Create dropdown for following-->
-    <md-button class="md-icon-button" aria-label="help">
-      <md-icon md-svg-icon="assets/images/help.svg"></md-icon>
+    <md-button class="md-icon-button" aria-label="upload" ng-click="vm.upload()">
+      <i class="material-icons">cloud_upload</i>
     </md-button>
-    <md-button class="md-icon-button" aria-label="phone">
-      <md-icon md-svg-icon="assets/images/phone.svg"></md-icon>
-    </md-button>
+    <div class="life-calendar__navbar__download">
+      <md-button class="md-icon-button" aria-label="download" ng-click="vm.download()">
+        <i class="material-icons">file_download</i>
+      </md-button>
+    </div>
     <md-button class="md-icon-button" aria-label="email">
       <md-icon md-svg-icon="assets/images/email.svg"></md-icon>
     </md-button>
