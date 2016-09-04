@@ -10,17 +10,18 @@ angular.module('life-calendar')
 
 function lifeCalendarNavbar(lifeCalendarUserConfigService, lifeCalendarUserDataService) {
   var vm = this;
+  vm.download = download;
+
   var userConfig = lifeCalendarUserDataService
     .getUserData()
     .then(function (res) {
-      console.log('userConfig -- ', JSON.stringify(res));
-      return JSON.stringify(res);
+        return res;
       }
     );
 
-  vm.download = function () {
+  function download() {
     lifeCalendarUserConfigService
-      .downloadConfig(userConfig, 'myfilename.json', 'application/json')
+      .downloadConfig(userConfig, 'mydata.json', 'application/json')
       .then();
   }
 }

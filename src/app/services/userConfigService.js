@@ -6,25 +6,29 @@ angular
 
 function lifeCalendarUserConfigService($q, $document) {
 
-  var uploadConfig = function () {
+  var uploadConfig;
+  var downloadConfig;
+
+  uploadConfig = function () {
   };
 
-  var downloadConfig = function (text, name, type) {
+  downloadConfig = function (data, name, type) {
 
+    var dataToSave = (JSON.stringify(data));
+    console.log('dataToSave ===== ', dataToSave);
     var downloadEl = $document[0].querySelector(".life-calendar__navbar__download");
     var linkEl = $document[0].createElement('a');
     linkEl.className = 'calendar__navbar__download-link';
-    //TODO: smomething wrong with the format json.. [] works but {} no
-    var file = new Blob([text], {type: type});
+    var blob = new Blob([dataToSave], {type: type});
 
-    function appendTagElement() {
+    function appendTagToElement() {
       downloadEl.appendChild(linkEl);
-      linkEl.href = URL.createObjectURL(file);
+      linkEl.href = URL.createObjectURL(blob);
       linkEl.download = name;
       $document[0].querySelector('.calendar__navbar__download-link').click();
     }
 
-    return $q.when(appendTagElement());
+    return $q.when(appendTagToElement());
   };
 
   return {
