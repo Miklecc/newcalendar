@@ -6,13 +6,15 @@ angular
 
 function lifeCalendarUserConfigService($q, $document) {
 
-  var uploadConfig;
-  var downloadConfig;
+  function uploadConfig(userJsonFile) {
 
-  uploadConfig = function () {
-  };
+    //TODO: save data to scope and update app to display data from user json.file
+    console.log(userJsonFile);
 
-  downloadConfig = function (data, name, type) {
+    return $q.when('SOME');
+  }
+
+  function downloadConfig(data, name, type) {
 
     var dataToSave = (JSON.stringify(data));
     console.log('dataToSave ===== ', dataToSave);
@@ -29,7 +31,7 @@ function lifeCalendarUserConfigService($q, $document) {
     }
 
     return $q.when(appendTagToElement());
-  };
+  }
 
   return {
     uploadConfig: uploadConfig,

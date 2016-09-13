@@ -3,10 +3,12 @@
     <h2>
       <span>Life calendar</span>
     </h2>
-    <span flex></span>
-    <md-button class="md-icon-button" aria-label="upload" ng-click="vm.upload()">
+    <!--<span flex></span>-->
+    <input class="ng-hide" id="file-input" multiple type="file" life-calendar-upload-button="vm.upload"/>
+    <label for="file-input" aria-label="upload" md-ink-ripple
+           class="md-button md-icon-button">
       <i class="material-icons">cloud_upload</i>
-    </md-button>
+    </label>
     <div class="life-calendar__navbar__download">
       <md-button class="md-icon-button" aria-label="download" ng-click="vm.download()">
         <i class="material-icons">file_download</i>
